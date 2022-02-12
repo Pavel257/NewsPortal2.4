@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<h2>Пользователь "{{request.user.username}}" - статус {% if is_not_authors %} Пользователь {% endif %} {% if is_authors %} Автор {% endif %}</h2>
+<hr>
+<br>
+<h2>Страница авторизованного пользователя {{request.user.username}}</h2>
+<br>
+<div> Здесь может содержаться персональная информация для каждого пользователя </div>
+
+<button> <a href="sign/logout/">Выйти</a> </button>
+
+{% if is_not_premium %}
+<button> <a href="sign/upgrade/"> Хочу Premium!</a> </button>
+{% endif %}
+{% if is_not_authors %}
+<button> <a href="sign/become_author/">Хочу стать автором!</a></button>
+{% endif %}
+{% if is_authors %}
+<button><a href="sign/not_author/">Хочу стать пользователем!</a></button>
+{% endif %}
+{% endblock %}

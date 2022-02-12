@@ -1,0 +1,27 @@
+{% extends 'flatpages/default.html' %}
+
+{% load my_filters %}
+
+{% block title %}
+Post
+{% endblock title %}
+
+{% block content %}
+
+
+<br>
+<h7><p style="text-align: right;">{{ time_now|date:'d M. Y' }}</p></h7>
+<h1>{{ Post.author }}</h1>
+{%for new in Post.postCategory.all%}
+<hr><h3>{{ new }}</hr></h3>
+{% endfor %}
+<hr><h4>{{ Post.title|Censor }}</hr></h4>
+<hr><h5>{{ Post.text|Censor }}</hr></h5>
+<hr><h6>{{ Post.rating }}</hr></h6>
+<hr><h7>{{ Post.dateCreation|date:'d M. Y' }}</hr></h7>
+
+<br>
+{% endblock content %}
+
+
+

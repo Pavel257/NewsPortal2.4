@@ -1,0 +1,53 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %} Delete News {% endblock title %}
+
+{% block content %}
+<h2>Вы действительно хотите удалить новость?</h2>
+<table>
+    <tr>
+        <td>
+            <h4><em><span style="color: #008000;">Имя автора</span></em></h4>
+            <hr/>
+        </td>
+        <td>
+            <h4><em><span style="color: #008000;">Рейтинг новости</span></em></h4>
+            <hr/>
+        </td>
+        <td>
+            <h4><em><span style="color: #008000;">Категория</span></em></h4>
+            <hr/>
+        </td>
+        <td>
+            <h4><em><span style="color: #008000;">Статья</span></em></h4>
+            <hr/>
+
+        </td>
+        <td>
+            <h4><em><span style="color: #008000;">Дата публикации</span></em></h4>
+            <hr/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {{ post.author|title }}
+        </td>
+        <td>
+            {{ post.rating }}
+        </td>
+        <td>
+            {{ post.postCategory }}
+        </td>
+        <td>
+            {{ post.text|truncatechars:128 }}
+        </td>
+    </tr>
+</table>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Удалить"></form>
+{% endblock content %}
+
+
+

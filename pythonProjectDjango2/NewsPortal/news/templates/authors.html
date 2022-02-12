@@ -1,0 +1,41 @@
+{% extends 'flatpages/default.html' %}
+{% block title %}
+Authors
+{% endblock title %}
+
+{% block content %}
+    <h1><span style="color: #993300;">Все авторы</span></h1>
+<hr size="5" style="color: #0099ff;" />
+   <h7><p style="text-align: right;">{{ time_now|date:'d M. Y' }}</p></h7>
+    <hr>
+    {% if Authors %} <!-- Если есть товары, то выводим таблицу с ними -->
+        <table>
+            <tr>
+                <td>
+                    <h4><em><span style="color: #008000;">Имя автора</span></em></h4>
+                    <hr />
+                </td>
+                <td>
+                    <h4><em><span style="color: #008000;">Рейтинг автора</span></em></h4>
+                    <hr />
+                </td>
+
+            </tr>
+        {% for authors in Authors %} <!-- Для каждого товара будете генерироваться новая строчка, т. е. новый html-код. При этом сам цикл работает точно также, как и в Python. product — переменная цикла, т. е. наш товар, взятый из общего списка -->
+            <tr>
+                <td>
+                    <h4><a href="{% url 'news_detail' authors.id %}">{{ authors.authorUser }}</h4></a>
+                <hr />
+                </td>
+                <td>
+                    <h4>{{ authors.ratingAuthor }}</h4>
+                    <hr />
+                </td>
+
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <h2>Авторов нет!</h2>
+    {% endif %}
+{% endblock content %}

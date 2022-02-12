@@ -1,0 +1,17 @@
+<!--базовый шаблон, который будет расширять все остальные шаблоны-->
+<html>
+    <head>
+        <title> Страница пользователя {{request.user.username}}</title>
+    </head>
+    <body>
+        <div>
+
+            <h1><a href="http://127.0.0.1:8000/news/">Новости</a></h1>
+            <h1><a style="text-align:center;" href="/">SignUp/SignIn</a></h1>
+<!--            <h3><a href="http://127.0.0.1:8000/admin/">Admin</a></h3>-->
+<hr>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
